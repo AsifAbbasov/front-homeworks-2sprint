@@ -1,18 +1,54 @@
 .sendForm {
-
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  margin: 20px auto; /* 🔥 центрирование */
+  width: fit-content; /* форма сжимается по контенту */
 }
 
 .textarea {
+  width: 976px;
+  max-width: 976px;
+  min-height: 40px;
 
+  padding-left: 24px; /* ← отступ слева */
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border-radius: 20px;
+  border: none;
+  outline: none;
+
+  background-color: #f5f7fb;
+
+  resize: none;
+  overflow: hidden;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 20px; /* 🔑 центрирование текста */
+
+  box-sizing: border-box;
 }
 
 .button {
-
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #0066cc;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .button:hover {
-
+  background-color: #0052a3;
 }
-.button:active {
 
+.button:active {
+  transform: scale(0.97);
 }
