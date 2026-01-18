@@ -1,35 +1,93 @@
 .greetingForm {
+  display: flex;
+  flex-direction: column; /* вертикально располагаем текст, затем input+кнопка */
+  align-items: flex-start; /* все блоки прижаты к левому краю */
+  padding-left: 70px; /* смещаем форму от левого края */
 }
 
 .inputAndButtonContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* расстояние между input и кнопкой */
+  margin-top: 8px; /* отступ сверху от текста "Людей добавили" */
 }
 
 .error {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 14px; /* 100% */
+  letter-spacing: 0;
+  color: #cc0000; /* красный для ошибки */
+  margin-top: 4px; /* небольшой отступ сверху от input */
 }
 
 .input {
+  width: 372px;
+  height: 36px;
+  padding: 0 8px; /* чтобы текст не прилипал к краю */
+  border: 1px solid #ccc; /* обычная рамка */
+  border-radius: 3px;
+  outline: none;
+  font-size: 14px;
 }
 
 .input:focus {
+  border-color: #0066cc; /* подсветка при фокусе */
 }
 
 .errorInput {
+  border-color: red; /* красная рамка при ошибке */
+  width: 372px;
+  height: 36px;
 }
 
 .button {
+  width: 78px;
+  height: 36px;
+  border-radius: 3px;
+  background-color: #0066cc;
+  color: #fff;
+  opacity: 0.5; /* по умолчанию полупрозрачная */
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: -4px;
 }
 
 .button:focus {
+  outline: 2px solid #004999;
 }
 
 .button:active {
+  background-color: #0055aa;
+  opacity: 1; /* чтобы была яркая при нажатии */
 }
 
 .button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #0066cc;
 }
 
 .text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 14px; /* 100% */
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.5); /* #00000080 */
 }
 
 .greeting {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* Medium */
+  font-style: normal; /* Medium в CSS — font-weight 500, font-style normal */
+  font-size: 14px;
+  line-height: 14px; /* 100% от font-size */
+  letter-spacing: 0;
+  color: #000000; /* чёрный */
+  margin-top: 8px; /* чтобы немного отстоят от кнопки/инпута */
 }
