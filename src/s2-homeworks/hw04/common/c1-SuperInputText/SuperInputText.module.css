@@ -1,20 +1,49 @@
 .input:focus {
+  border-color: #4d90fe;
 }
 
+/* базовый input */
 .input {
+  width: 372px; /* ширина из макета */
+  height: 36px; /* высота из макета */
+  padding: 0 10px; /* внутренние отступы для текста */
+  border: 1px solid #ccc; /* обычный бордер */
+  border-radius: 4px; /* скругление углов */
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  opacity: 1; /* как в макете */
+  transition: border 0.2s;
 }
 
 .inputWrapper {
+  margin-top: 70px; /* отступ от верха макета для первого инпута */
+  margin-left: 70px; /* отступ слева от макета */
+  display: flex;
+  flex-direction: column; /* инпут + текст ошибки вниз */
 }
 
 .superInput {
+  border-color: #ccc;
 }
 
 .errorInput {
+  border-color: #cc1439; /* красный бордер при ошибке */
 }
 
+/* фокус для инпута с ошибкой */
 .errorInput:focus {
+  border-color: #cc1439; /* сохраняем красный бордер, если есть ошибка */
 }
 
 .error {
+  color: #cc1439; /* красный цвет ошибки */
+  margin-top: 8px; /* отступ текста ошибки от инпута */
+  font-size: 12px;
+  height: 14px; /* чтобы не прыгал контент при появлении ошибки */
+  line-height: 14px;
+}
+
+.inputWrapper + .inputWrapper {
+  margin-top: 48px; /* расстояние между первым и вторым инпутом */
 }

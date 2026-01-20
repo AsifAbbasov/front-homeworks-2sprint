@@ -1,36 +1,135 @@
-.button {
+.buttons {
+  margin-top: 132px; /* от инпутов */
+  margin-bottom: 55px; /* от нижней границы блока */
+  display: flex;
+  flex-direction: column; /* вертикально */
 }
 
+/* неактивная кнопка */
 .disabled {
+  width: 167px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px 24px;
+  gap: 10px;
+  background-color: #004d99;
+  color: #fff;
+  opacity: 0.5;
+  cursor: not-allowed;
+  border: none;
 }
 
+/* дополнительная кнопка (secondary) */
 .secondary {
+  width: 176px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px 24px;
+  gap: 10px;
+  background-color: transparent;
+  color: #0066cc;
+  border: 1px solid #0066cc;
+  opacity: 1;
 }
 
 .default {
+  width: 167px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px 24px;
+  gap: 10px;
+  background-color: #0066cc;
+  color: #fff;
+  opacity: 1;
+  border: none;
 }
 
+/* опасная кнопка (red) */
 .red {
+  width: 167px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px 24px;
+  gap: 10px;
+  background-color: #cc1439;
+  color: #fff;
+  opacity: 1;
+  border: none;
 }
 
 .default:hover {
+  background-color: #005bb5; /* чуть темнее при наведении */
 }
 
 .red:hover {
+  background-color: #b01233;
 }
 
 .secondary:hover {
+  background-color: #e6f0ff; /* лёгкий эффект при наведении */
 }
 
-
 .default:active {
+  background-color: #004c99; /* ещё темнее при клике */
 }
 
 .secondary:active {
+  background-color: #cce0ff; /* активное состояние */
 }
 
 .red:active {
+  background-color: #990f2a;
 }
 
+/* универсальный disabled для всех кнопок */
 .button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.default:hover::after,
+.red:hover::after,
+.secondary:hover::after {
+  content: 'При наведении';
+  position: absolute;
+  top: 100%; /* чуть ниже кнопки */
+  left: 0;
+  font-size: 12px;
+  color: #000;
+}
+
+.default:active::after,
+.red:active::after,
+.secondary:active::after {
+  content: 'При нажатии';
+  position: absolute;
+  top: 100%; /* чуть ниже кнопки */
+  left: 0;
+  font-size: 12px;
+  color: #000;
+}
+
+.buttonWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%; /* чуть ниже кнопки */
+  left: 0;
+  font-size: 12px;
+  color: #000;
+  background: #fff;
+  padding: 2px 4px;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  margin-top: 4px;
+  z-index: 10;
 }
