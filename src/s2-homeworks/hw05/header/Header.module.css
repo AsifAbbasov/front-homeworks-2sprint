@@ -1,8 +1,27 @@
 .burgerMenuIcon {
+  width: 24px;
+  height: 24px;
+  margin-left: 70px;
+  cursor: pointer;
 }
 
 .header {
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid #1d21261a;
 }
 
+/* заголовок уходит вправо */
 .header h1 {
+  margin-left: auto;
+  margin-right: 70px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  color: #000000;
 }
