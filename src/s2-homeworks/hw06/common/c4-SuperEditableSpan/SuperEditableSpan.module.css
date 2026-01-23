@@ -1,11 +1,40 @@
 .spanBlock {
+  display: flex;
+  align-items: center; /* выравнивание текста и иконки по центру */
+  gap: 6px; /* расстояние между иконкой и текстом */
 }
 
 .span {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #0080ff;
+  width: 100px;
 }
 
 .input {
+  font-family: 'Montserrat', sans-serif; /* шрифт */
+  font-weight: 500; /* Medium / 500 */
+  font-style: normal; /* Medium обычно берём normal */
+  font-size: 16px; /* размер текста */
+  line-height: 36px; /* чтобы совпадало с контейнером */
+  color: #000000; /* чёрный текст */
+  width: 276px; /* занимает всю ширину контейнера */
+  height: 36px; /* чтобы совпадало с блоком span */
+  padding: 0px; /* отступ слева и справа */
+  box-sizing: border-box; /* чтобы padding не ломал ширину */
+  border: 1px solid #575656; /* рамка для инпута */
+  border-radius: 4px; /* скругление углов */
+  box-sizing: border-box; /* чтобы padding не ломал ширину */
 }
 
 .pen {
+  position: relative;
+  width: 24px; /* ширина иконки */
+  height: 24px; /* высота иконки */
+  cursor: pointer; /* чтобы было понятно, что можно кликнуть */
+  margin-top: -6px;
+  margin-left: 70px;
 }
