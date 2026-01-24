@@ -1,70 +1,83 @@
 import React, {
-    ChangeEvent,
-    InputHTMLAttributes,
-    DetailedHTMLProps,
-    HTMLAttributes,
+  ChangeEvent,
+  InputHTMLAttributes,
+  DetailedHTMLProps,
+  HTMLAttributes,
 } from 'react'
 import s from './SuperRadio.module.css'
 
 type DefaultRadioPropsType = DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
 >
 // тип пропсов обычного спана
 type DefaultSpanPropsType = DetailedHTMLProps<
-    HTMLAttributes<HTMLSpanElement>,
-    HTMLSpanElement
+  HTMLAttributes<HTMLSpanElement>,
+  HTMLSpanElement
 >
 
 type SuperRadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
-    options?: any[]
-    onChangeOption?: (option: any) => void
+  options?: any[]
+  onChangeOption?: (option: any) => void
 
-    spanProps?: DefaultSpanPropsType // пропсы для спана
+  spanProps?: DefaultSpanPropsType // пропсы для спана
 }
 
 const SuperRadio: React.FC<SuperRadioPropsType> = ({
-    id,
-    name,
-    className,
-    options,
-    value,
-    onChange,
-    onChangeOption,
-    spanProps,
-    ...restProps
+  id,
+  name,
+  className,
+  options,
+  value,
+  onChange,
+  onChangeOption,
+  spanProps,
+  ...restProps
 }) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        // делают студенты
+  const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
+    // e — это событие, которое React передаёт при клике на радио-кнопку
+    // e.currentTarget — это конкретная кнопка <input>, по которой кликнули
+    // e.currentTarget.value — её value (строка!)
+    const selectedValue = e.currentTarget.value
+
+    // onChangeOption — функция из props, пришла из HW7
+    // Она на самом деле является setState, который хранит выбранное value
+    if (onChangeOption) {
+      // Приводим к числу, потому что state в HW7 — число
+      // Если не привести, будет сравнение "1" === 1, и checked работать не будет
+      onChangeOption(Number(selectedValue))
     }
+  }
 
-    const finalRadioClassName = s.radio + (className ? ' ' + className : '')
-    const spanClassName = s.span + (spanProps?.className ? ' ' + spanProps.className : '')
+  const finalRadioClassName = s.radio + (className ? ' ' + className : '')
+  const spanClassName =
+    s.span + (spanProps?.className ? ' ' + spanProps.className : '')
 
-    const mappedOptions: any[] = options
-        ? options.map((o) => (
-              <label key={name + '-' + o.id} className={s.label}>
-                  <input
-                      id={id + '-input-' + o.id}
-                      className={finalRadioClassName}
-                      type={'radio'}
-                      // name, checked, value делают студенты
+  const mappedOptions: any[] = options
+    ? options.map(o => (
+        <label key={name + '-' + o.id} className={s.label}>
+          <input
+            id={id + '-input-' + o.id}
+            className={finalRadioClassName}
+            type={'radio'}
+            name={name}
+            value={o.id}
+            checked={o.id === value}
+            onChange={onChangeCallback}
+            {...restProps}
+          />
+          <span
+            id={id + '-span-' + o.id}
+            {...spanProps}
+            className={spanClassName}
+          >
+            {o.value}
+          </span>
+        </label>
+      ))
+    : []
 
-                      onChange={onChangeCallback}
-                      {...restProps}
-                  />
-                  <span
-                      id={id + '-span-' + o.id}
-                      {...spanProps}
-                      className={spanClassName}
-                  >
-                      {o.value}
-                  </span>
-              </label>
-          ))
-        : []
-
-    return <div className={s.options}>{mappedOptions}</div>
+  return <div className={s.options}>{mappedOptions}</div>
 }
 
 export default SuperRadio
