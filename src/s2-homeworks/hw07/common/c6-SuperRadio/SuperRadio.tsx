@@ -35,17 +35,8 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
   ...restProps
 }) => {
   const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-    // e — это событие, которое React передаёт при клике на радио-кнопку
-    // e.currentTarget — это конкретная кнопка <input>, по которой кликнули
-    // e.currentTarget.value — её value (строка!)
-    const selectedValue = e.currentTarget.value
-
-    // onChangeOption — функция из props, пришла из HW7
-    // Она на самом деле является setState, который хранит выбранное value
     if (onChangeOption) {
-      // Приводим к числу, потому что state в HW7 — число
-      // Если не привести, будет сравнение "1" === 1, и checked работать не будет
-      onChangeOption(Number(selectedValue))
+      onChangeOption(+e.currentTarget.value)
     }
   }
 
@@ -60,9 +51,10 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
             id={id + '-input-' + o.id}
             className={finalRadioClassName}
             type={'radio'}
-            name={name}
+            // name, checked, value делают студенты
             value={o.id}
-            checked={o.id === value}
+            name={'options'}
+            checked={o.id === value ? true : false}
             onChange={onChangeCallback}
             {...restProps}
           />

@@ -36,14 +36,8 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
     : [] // map options with key
 
   const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
-    // e.currentTarget.value — значение выбранного <option>
-    // ВАЖНО: это всегда строка, даже если value у option число
-    const selectedValue = e.currentTarget.value
-
-    // Если функция onChangeOption пришла через props, вызываем её
-    // Приводим selectedValue к числу, чтобы state HW7 правильно обновился
     if (onChangeOption) {
-      onChangeOption(Number(selectedValue))
+      onChangeOption(+e.currentTarget.value)
     }
   }
 
